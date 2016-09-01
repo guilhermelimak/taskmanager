@@ -4,12 +4,27 @@
 
 <script>
 import Dashboard from 'components/Dashboard.vue'
-import store from './store'
+
+import { replaceState } from 'actions'
+import store, { database } from 'store'
 
 export default {
   el: 'body',
   store,
   replace: false,
+  ready() {
+    database
+    .ref()
+    .once('value')
+    .then(snapshot => {
+      this.replaceState(snapshot.val())
+    })
+  },
+  vuex: {
+    actions: {
+      replaceState,
+    },
+  },
   components: {
     Dashboard,
   },
@@ -18,10 +33,20 @@ export default {
 
 <style>
 @import '../node_modules/bulma/css/bulma.css';
+@import 'general.scss';
 
-html,
+* {
+  border-radius: 1px !important;
+}
+
+html {
+  height: 100%;
+}
+
 body {
+  overflow-x: scroll;
   height:  100%;
+  background-color: #625A6A;
   font-family: Helvetica, sans-serif;
 }
 </style>

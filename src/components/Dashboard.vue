@@ -1,13 +1,37 @@
 <template>
 <div class="dashboard__container">
-  <card-list v-for="list in lists"></card-list>
+  <card-list
+    :cards="cards"
+    :key="$key"
+    :list="list"
+    v-for="list in lists">
+  </card-list>
 </div>
 </template>
 
 <script>
 import CardList from 'components/CardList.vue'
+import { lists, cards } from 'getters'
+import { database } from 'store'
+import { replaceState } from 'actions'
 
 export default {
+  ready() {
+    database
+    .ref()
+    .on('value', snapshot => {
+      this.replaceState(snapshot.val())
+    })
+  },
+  vuex: {
+    actions: {
+      replaceState,
+    },
+    getters: {
+      cards,
+      lists,
+    },
+  },
   components: {
     CardList,
   },
@@ -20,8 +44,7 @@ export default {
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 20px;
-    width: 100%;
+    padding: 10px;
   }
 }
 </style>
