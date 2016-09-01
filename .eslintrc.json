@@ -1,0 +1,43 @@
+{
+  "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+  },
+  "extends": "airbnb-base",
+  "parserOptions": {
+      "sourceType": "module",
+      "experimentalObjectRestSpread": true
+  },
+  "globals": {
+    "describe": true,
+    "it": true
+  },
+  "rules": {
+    "guard-for-in": "off",
+    "semi": [
+      "error",
+      "never"
+    ],
+    "curly": "off",
+    "no-unneeded-ternary":  [
+      "error",
+      { "defaultAssignment": true }
+    ],
+    "no-shadow": "off",
+    "no-param-reassign": "off",
+    "arrow-body-style": "off",
+    "no-unexpected-multiline": "error",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "no-restricted-syntax": "off",
+    "no-unused-expressions": ["error", {"allowTernary": true}],
+    "func-names": "off"
+  },
+  "plugins": [
+    "vue"
+  ]
+}
