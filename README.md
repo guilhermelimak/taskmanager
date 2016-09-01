@@ -1,6 +1,4 @@
-# task-manager-2
-
-> A Vue.js project
+# taskmanager
 
 ## Build Setup
 
