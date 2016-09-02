@@ -5,21 +5,30 @@
      class="card-list__container depth-3"
      bag>
 
-  <h1>{{ list.name }}</h1>
+  <div class="card-list__header level">
+    <strong class="card-list__name level-left">
+      {{ list.name }}
+    </strong>
+
+    <span @click="newCardModal(key)" class="icon level-right">
+      <i class="fa fa-plus-circle is-primary"></i>
+    </span>
+  </div>
 
   <card
     class="depth1"
     v-for="card in filteredCards"
     draggable="true"
     @dragstart="onComponentDrag"
-    :card="card"></card>
+    :card="card">
+  </card>
 </div>
 </template>
 
 <script>
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
-import { moveCard } from 'actions'
+import { moveCard, newCardModal } from 'actions'
 
 export default {
   props: {
@@ -38,15 +47,14 @@ export default {
   computed: {
     filteredCards() {
       const filtered = []
-
-      Object.keys(this.cards).filter(key => {
-        if (this.cards[key].listID + '' === this.key) {
-          const card = { ...this.cards[key], key: key }
-
-          filtered.$set(filtered.length, card)
-        }
-      })
-
+      if (this.cards) {
+        Object.keys(this.cards).filter(key => {
+          if (`${this.cards[key].listID}` === this.key) {
+            const card = { ...this.cards[key], key }
+            filtered.$set(filtered.length, card)
+          }
+        })
+      }
       return filtered
     },
   },
@@ -67,6 +75,7 @@ export default {
   },
   vuex: {
     actions: {
+      newCardModal,
       moveCard,
     },
   },
@@ -78,7 +87,7 @@ export default {
 
 <style lang="sass">
 $list-max-width: 270px;
-$list-bg-color: #C7DAC5;
+$list-bg-color: #211E21;
 
 .card-list {
   &__container {
@@ -86,6 +95,16 @@ $list-bg-color: #C7DAC5;
     margin: 0 9px;
     min-width: $list-max-width;
     padding: 6px;
+  }
+
+  &__header {
+    padding: 4px;
+  }
+
+  &__name {
+    font-size: 13pt;
+    font-weight: 500;
+    color: #EEE !important;
   }
 }
 </style>
