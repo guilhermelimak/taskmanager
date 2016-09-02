@@ -32,6 +32,8 @@ export default {
 </script>
 
 <style>
+<style lang="sass">
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '../node_modules/bulma/css/bulma.css';
 @import 'general.scss';
 
