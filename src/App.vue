@@ -7,6 +7,7 @@
 <script>
 import Dashboard from 'components/Dashboard.vue'
 import CardModal from 'components/CardModal.vue'
+import Navbar from 'components/Navbar.vue'
 
 import { replaceState } from 'actions'
 import store, { database } from 'store'
@@ -31,6 +32,7 @@ export default {
   components: {
     Dashboard,
     CardModal,
+    Navbar,
   },
 }
 </script>
