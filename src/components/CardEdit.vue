@@ -1,36 +1,32 @@
 <template>
 <div class="card is-fullwidth">
-  <header class="card-header">
-    <p class="card-header-title">
-      {{ card.title }}
-    </p>
-  </header>
-
   <div class="card-content">
     <label class="label">Title</label>
     <p class="control">
       <input
         autofocus
-        @keyup="update"
+        @keyup.enter="saveCard"
         class="input" placeholder="Title"
         v-model="card.title">
     </p>
 
-    <div class="content">
-      {{ card.description }}
-      <p v-if="!card.description">This is a placeholder description</p>
-      <p class="is-bold">{{ card.hours }}</p>
-    </div>
+    <label class="label">Description</label>
+    <p class="control">
+      <input
+        @keyup.enter="saveCard"
+        class="input" placeholder="Description"
+        v-model="card.description">
+    </p>
   </div>
 
   <footer class="card-footer">
-    <a @click="updateCard(card.key, card)" class="card-footer-item">Save</a>
+    <a @click="createOrUpdateCard(card)" class="card-footer-item">Save</a>
   </footer>
 </div>
 </template>
 
 <script>
-import { updateCurrentCard, updateCard } from 'actions'
+import { updateCurrentCard, createOrUpdateCard } from 'actions'
 
 export default {
   props: {
@@ -43,11 +39,14 @@ export default {
     update() {
       this.updateCurrentCard(this.card)
     },
+    saveCard() {
+      this.createOrUpdateCard(this.card)
+    },
   },
   vuex: {
     actions: {
       updateCurrentCard,
-      updateCard,
+      createOrUpdateCard,
     },
   },
 }

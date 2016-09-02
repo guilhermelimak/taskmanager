@@ -4,33 +4,42 @@
     <p class="card-header-title">
       {{ card.title }}
     </p>
+
     <a class="card-header-icon">
       <i class="fa fa-angle-down"></i>
     </a>
   </header>
+
   <div class="card-content">
     <div class="content">
       {{ card.description }}
-      <p v-if="!card.description">This is a placeholder description</p>
-      <p class="is-bold">{{ card.hours }}</p>
+
+      <p><strong>{{ card.hours }}h</strong></p>
+
     </div>
   </div>
+
   <footer class="card-footer">
-    <a v-if="!isEditable" @click="editCard(card)" class="card-footer-item">Edit</a>
-    <a @click="deleteCard(card.key)" class="card-footer-item">Delete</a>
+    <a v-if="!isEditable"
+      @click="editCard(card)"
+      class="card-footer-item">
+      Edit
+    </a>
+
+    <a
+      @click="deleteCard(card.key)"
+      class="card-footer-item">
+      Delete
+    </a>
   </footer>
 </div>
 </template>
 
 <script>
-import { updateCard, deleteCard, editCard } from 'actions'
+import { deleteCard, editCard } from 'actions'
 
 export default {
   props: {
-    key: {
-      type: String,
-      required: true,
-    },
     card: {
       type: Object,
       required: true,
@@ -39,7 +48,6 @@ export default {
   vuex: {
     actions: {
       editCard,
-      updateCard,
       deleteCard,
     },
   },
