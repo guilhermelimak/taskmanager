@@ -11,7 +11,7 @@ const state = {
   cards: null,
   loading: true,
   isCardModalOpen: false,
-  currentCard: '',
+  currentCard: {},
 }
 
 const firebase = require('firebase/app')
