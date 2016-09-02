@@ -5,23 +5,26 @@ export const moveCard = ({ dispatch }, event) => {
   database.ref(`cards/${event.cardID}/`).update({ listID: event.targetListID })
 }
 
-export const updateCard = ({ dispatch }, cardID, newCard) => {
-  if (!cardID) {
-    cardID = database.ref('cards/').push().update({ ...newCard })
-  } else {
-    database.ref(`cards/${cardID}/`).update({ ...newCard })
-  }
-
-  dispatch('TOGGLE_MODAL')
-  dispatch('CHANGE_CURRENT_CARD', { ...emptyCard })
-}
-
 export const deleteCard = ({ dispatch }, cardID) => {
   database.ref(`cards/${cardID}/`).remove()
 }
 
-export const addCard = ({ dispatch }, newCard, listID) => {
-  dispatch('ADD_CARD', newCard, listID)
+export const createOrUpdateCard = ({ dispatch }, newCard) => {
+  let cardRef
+  let cardID
+
+  if (!newCard.key) {
+    cardRef = database.ref('cards/').push()
+    cardID = cardRef.key
+  } else {
+    cardID = newCard.key
+    cardRef = database.ref(`cards/${cardID}/`)
+  }
+
+  cardRef.update({ ...newCard, key: cardID })
+
+  dispatch('TOGGLE_MODAL')
+  dispatch('CHANGE_CURRENT_CARD', { ...emptyCard })
 }
 
 export const editCard = ({ dispatch }, card) => {
