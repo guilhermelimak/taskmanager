@@ -15,3 +15,15 @@ export const editCard = ({ dispatch }, card) => {
   dispatch('CHANGE_CURRENT_CARD', card)
   dispatch('TOGGLE_MODAL')
 }
+
+export const addCard = ({ dispatch }, newCard) => {
+  dispatch('ADD_CARD', newCard)
+}
+
+export const updateCard = ({ dispatch }, cardID, newCard) => {
+  database.ref(`cards/${cardID}/`).update({ ...newCard })
+}
+
+export const deleteCard = ({ dispatch }, cardID) => {
+  database.ref(`cards/${cardID}/`).remove()
+}
