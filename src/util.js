@@ -11,3 +11,9 @@ export const getParentBag = (el) => {
 
   return currentElement
 }
+
+export const emptyCard = {
+  title: '',
+  description: '',
+  hours: null,
+}
