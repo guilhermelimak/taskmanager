@@ -8,3 +8,10 @@ export const replaceState = ({ dispatch }, newState) => {
 export const moveCard = ({ dispatch }, event) => {
   database.ref(`cards/${event.cardID}/`).update({ listID: event.targetListID })
 }
+
+export const toggleModal = ({ dispatch }) => dispatch('TOGGLE_MODAL')
+
+export const editCard = ({ dispatch }, card) => {
+  dispatch('CHANGE_CURRENT_CARD', card)
+  dispatch('TOGGLE_MODAL')
+}

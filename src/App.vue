@@ -1,9 +1,11 @@
 <template>
+  <card-modal></card-modal>
   <dashboard></dashboard>
 </template>
 
 <script>
 import Dashboard from 'components/Dashboard.vue'
+import CardModal from 'components/CardModal.vue'
 
 import { replaceState } from 'actions'
 import store, { database } from 'store'
@@ -27,6 +29,7 @@ export default {
   },
   components: {
     Dashboard,
+    CardModal,
   },
 }
 </script>
