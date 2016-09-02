@@ -1,53 +1,57 @@
 <template>
-<div class="card is-fullwidth" :id="card.key">
+<div class="card is-fullwidth">
   <header class="card-header">
     <p class="card-header-title">
       {{ card.title }}
     </p>
-    <a class="card-header-icon">
-      <i class="fa fa-angle-down"></i>
-    </a>
   </header>
+
   <div class="card-content">
+    <label class="label">Title</label>
+    <p class="control">
+      <input
+        autofocus
+        @keyup="update"
+        class="input" placeholder="Title"
+        v-model="card.title">
+    </p>
+
     <div class="content">
       {{ card.description }}
       <p v-if="!card.description">This is a placeholder description</p>
       <p class="is-bold">{{ card.hours }}</p>
     </div>
   </div>
+
   <footer class="card-footer">
-    <a v-if="!isEditable" @click="editCard(card)" class="card-footer-item">Edit</a>
-    <a @click="deleteCard(card.key)" class="card-footer-item">Delete</a>
+    <a @click="updateCard(card.key, card)" class="card-footer-item">Save</a>
   </footer>
 </div>
 </template>
 
 <script>
-import { updateCard, deleteCard, editCard } from 'actions'
+import { updateCurrentCard, updateCard } from 'actions'
 
 export default {
   props: {
-    key: {
-      type: String,
-      required: true,
-    },
     card: {
       type: Object,
       required: true,
     },
   },
+  methods: {
+    update() {
+      this.updateCurrentCard(this.card)
+    },
+  },
   vuex: {
     actions: {
-      editCard,
+      updateCurrentCard,
       updateCard,
-      deleteCard,
     },
   },
 }
 </script>
 
-<style lang="sass" scoped>
-.card {
-  margin-bottom: 7px;
-}
+<style lang="sass">
 </style>

@@ -3,7 +3,7 @@
   <div @click="toggleModal" class="modal-background"></div>
   <div class="modal-container">
     <div class="modal-content">
-      <card :is-editable="true" :card="currentCard" :key="currentCard.key"></card>
+      <card-edit :card="currentCard"></card-edit>
     </div>
   </div>
   <button class="modal-close" @click="toggleModal"></button>
@@ -13,11 +13,11 @@
 <script>
 import { isCardModalOpen, currentCard } from 'getters'
 import { toggleModal } from 'actions'
-import Card from 'components/Card.vue'
+import CardEdit from 'components/CardEdit.vue'
 
 export default {
   components: {
-    Card,
+    CardEdit,
   },
   vuex: {
     actions: {
