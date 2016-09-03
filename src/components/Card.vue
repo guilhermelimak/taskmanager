@@ -12,10 +12,13 @@
 
   <div class="card-content">
     <div class="content">
-      {{ card.description }}
+      <p class="card__description">
+        {{ card.description }}
+      </p>
 
-      <p><strong>{{ card.hours }}h</strong></p>
-
+<!--  <p class="card__stats"><strong>Development: </strong>{{ card.development_hours }}h</p>
+      <p class="card__stats"><strong>Testing: </strong>{{ card.testing_hours }}h</p>
+      <p class="card__stats"><strong>Analysis: </strong>{{ card.analysis_hours }}h</p> -->
     </div>
   </div>
 
@@ -56,6 +59,22 @@ export default {
 
 <style lang="sass" scoped>
 .card {
+  font-size: 12px;
   margin-bottom: 7px;
+
+  &__stats {
+    margin: 3px 0 !important;
+  }
+
+  &:hover,
+  &:not(:hover){
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover {
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3) !important;
+
+    opacity: 1 !important;
+  }
 }
 </style>

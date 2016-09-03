@@ -12,10 +12,11 @@
 
     <label class="label">Description</label>
     <p class="control">
-      <input
+      <textarea
         @keyup.enter="saveCard"
-        class="input" placeholder="Description"
+        class="textarea" placeholder="Description"
         v-model="card.description">
+      </textarea>
     </p>
   </div>
 

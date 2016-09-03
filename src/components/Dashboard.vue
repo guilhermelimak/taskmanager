@@ -44,7 +44,7 @@ export default {
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 50px 10px 10px 10px;
+    padding: 50px 1px 10px 1px;
   }
 }
 </style>

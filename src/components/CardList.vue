@@ -2,7 +2,7 @@
 <div @drop="onComponentDrop"
      @dragover.prevent
      :id="key"
-     class="card-list__container depth-3"
+     class="depth-3 card-list__container"
      bag>
 
   <div class="card-list__header level">
@@ -11,12 +11,12 @@
     </strong>
 
     <span @click="newCardModal(key)" class="icon level-right">
-      <i class="fa fa-plus-circle is-primary"></i>
+      <i class="fa fa-plus-circle is-primary card-list__add-button"></i>
     </span>
   </div>
 
   <card
-    class="depth1"
+    class="depth-1"
     v-for="card in filteredCards"
     draggable="true"
     @dragstart="onComponentDrag"
@@ -87,24 +87,36 @@ export default {
 
 <style lang="sass">
 $list-max-width: 270px;
-$list-bg-color: #211E21;
+$list-bg-color: #fdfdfd;
 
 .card-list {
   &__container {
     background-color: $list-bg-color;
     margin: 0 9px;
+    margin-bottom: 0 !important;
     min-width: $list-max-width;
     padding: 6px;
   }
 
   &__header {
     padding: 4px;
+    margin-bottom: 0 !important;
   }
 
   &__name {
     font-size: 13pt;
     font-weight: 500;
-    color: #EEE !important;
+    color: #222324 !important;
+  }
+
+  &__add-button {
+    color: #1fc8db;
+    font-size: 14pt !important;
+
+    &:hover {
+      cursor: pointer;
+      color: #222324;
+    }
   }
 }
 </style>
