@@ -1,18 +1,18 @@
 <template>
 <div class="modal" :class="{ 'is-active': isCardModalOpen }">
-  <div @click="toggleModal" class="modal-background"></div>
+  <div @click="toggleCardModal" class="modal-background"></div>
   <div class="modal-container">
     <div class="modal-content">
       <card-edit :card="currentCard"></card-edit>
     </div>
   </div>
-  <button class="modal-close" @click="toggleModal"></button>
+  <button class="modal-close" @click="toggleCardModal"></button>
 </div>
 </template>
 
 <script>
 import { isCardModalOpen, currentCard } from 'getters'
-import { toggleModal } from 'actions'
+import { toggleCardModal } from 'actions'
 import CardEdit from 'components/CardEdit.vue'
 
 export default {
@@ -21,7 +21,7 @@ export default {
   },
   vuex: {
     actions: {
-      toggleModal,
+      toggleCardModal,
     },
     getters: {
       isCardModalOpen,

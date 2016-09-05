@@ -10,6 +10,7 @@ const state = {
   lists: null,
   cards: null,
   loading: true,
+  isImportModalOpen: false,
   isCardModalOpen: false,
   currentCard: {},
 }

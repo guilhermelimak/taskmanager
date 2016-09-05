@@ -1,4 +1,5 @@
 <template>
+  <import-modal></import-modal>
   <card-modal></card-modal>
   <navbar></navbar>
   <dashboard></dashboard>
@@ -7,6 +8,7 @@
 <script>
 import Dashboard from 'components/Dashboard.vue'
 import CardModal from 'components/CardModal.vue'
+import ImportModal from 'components/ImportModal.vue'
 import Navbar from 'components/Navbar.vue'
 
 import { replaceState, newCardModal } from 'actions'
@@ -33,6 +35,7 @@ export default {
   components: {
     Dashboard,
     CardModal,
+    ImportModal,
     Navbar,
   },
 }

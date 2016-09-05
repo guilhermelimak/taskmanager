@@ -23,18 +23,18 @@ export const createOrUpdateCard = ({ dispatch }, newCard) => {
 
   cardRef.update({ ...newCard, key: cardID })
 
-  dispatch('TOGGLE_MODAL')
+  dispatch('TOGGLE_CARD_MODAL')
   dispatch('CHANGE_CURRENT_CARD', { ...emptyCard })
 }
 
 export const editCard = ({ dispatch }, card) => {
   dispatch('CHANGE_CURRENT_CARD', card)
-  dispatch('TOGGLE_MODAL')
+  dispatch('TOGGLE_CARD_MODAL')
 }
 
 export const newCardModal = ({ dispatch }, listID) => {
   dispatch('CHANGE_CURRENT_CARD', { ...emptyCard, listID })
-  dispatch('TOGGLE_MODAL')
+  dispatch('TOGGLE_CARD_MODAL')
 }
 
 export const replaceState = ({ dispatch }, newState) => {
@@ -42,8 +42,19 @@ export const replaceState = ({ dispatch }, newState) => {
   dispatch('DISABLE_LOADING')
 }
 
-export const toggleModal = ({ dispatch }) => dispatch('TOGGLE_MODAL')
+export const toggleCardModal = ({ dispatch }) => dispatch('TOGGLE_CARD_MODAL')
+export const toggleImportModal = ({ dispatch }) => dispatch('TOGGLE_IMPORT_MODAL')
 
 export const updateCurrentCard = ({ dispatch }, card) => {
   dispatch('CHANGE_CURRENT_CARD', { ...card })
+}
+
+export const importTasks = ({ dispatch }, tasksList) => {
+  const tasksObj = JSON.parse(tasksList).tasks
+
+  for (const key in tasksObj) {
+    tasksObj[key] = { ...tasksObj[key], listID: 'a' }
+  }
+
+  database.ref('cards/').set(tasksObj)
 }
