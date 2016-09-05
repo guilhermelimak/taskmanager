@@ -11,12 +11,11 @@
     </strong>
 
     <span @click="newCardModal(key)" class="icon level-right">
-      <i class="fa fa-plus-circle is-primary card-list__add-button"></i>
+      <i class="fa fa-plus-circle card-list__add-button is-primary"></i>
     </span>
   </div>
 
   <card
-    class="depth-1"
     v-for="card in filteredCards"
     draggable="true"
     @dragstart="onComponentDrag"

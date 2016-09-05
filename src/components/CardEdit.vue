@@ -4,10 +4,10 @@
     <label class="label">Title</label>
     <p class="control">
       <input
-        autofocus
         @keyup.enter="saveCard"
         class="input" placeholder="Title"
-        v-model="card.title">
+        v-model="card.title"
+        autofocus>
     </p>
 
     <label class="label">Description</label>

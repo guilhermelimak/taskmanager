@@ -15,5 +15,8 @@ export const getParentBag = (el) => {
 export const emptyCard = {
   title: '',
   description: '',
+  analysis_duration: '',
+  development_duration: '',
+  testing_duration: '',
   hours: 0,
 }

@@ -43,8 +43,8 @@ export default {
   &__container {
     display: flex;
     flex-direction: row;
-    height: 100%;
-    padding: 50px 1px 10px 1px;
+    min-height: 70%; // height: 100%;
+    padding: 10px 1px 10px 1px;
   }
 }
 </style>

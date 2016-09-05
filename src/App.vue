@@ -22,9 +22,7 @@ export default {
     database
     .ref()
     .once('value')
-    .then(snapshot => {
-      this.replaceState(snapshot.val())
-    })
+    .then(snapshot => this.replaceState(snapshot.val()))
   },
   vuex: {
     actions: {
@@ -55,8 +53,8 @@ html {
 }
 
 body {
-  overflow-x: scroll;
-  height:  100%;
+  overflow-x: auto;
+  height: 100%;
   background-color: #625A6A;
   font-family: Helvetica, sans-serif;
 }
