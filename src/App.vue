@@ -50,6 +50,7 @@ export default {
 
 html {
   height: 100%;
+  overflow-y: auto;
 }
 
 body {

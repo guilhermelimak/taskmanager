@@ -93,7 +93,7 @@ $list-bg-color: #fdfdfd;
     background-color: $list-bg-color;
     margin: 0 9px;
     margin-bottom: 0 !important;
-    min-width: $list-max-width;
+    width: $list-max-width;
     padding: 6px;
   }
 
