@@ -16,6 +16,10 @@ export default {
     state.isImportModalOpen = !state.isImportModalOpen
   },
 
+  TOGGLE_SIDEBAR(state) {
+    state.isSidebarOpen = !state.isSidebarOpen
+  },
+
   CHANGE_CURRENT_CARD(state, cardKey) {
     state.currentCardID = cardKey
   },

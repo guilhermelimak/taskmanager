@@ -12,6 +12,7 @@ const state = {
   loading: true,
   isImportModalOpen: false,
   isCardModalOpen: false,
+  isSidebarOpen: false,
   currentCardID: null,
 }
 

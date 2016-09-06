@@ -6,11 +6,13 @@
     :list="list"
     v-for="list in lists">
   </card-list>
+  <sidebar></sidebar>
 </div>
 </template>
 
 <script>
 import CardList from 'components/CardList.vue'
+import Sidebar from 'components/Sidebar.vue'
 import { lists, cards } from 'getters'
 import { database } from 'store'
 import { replaceState } from 'actions'
@@ -34,6 +36,7 @@ export default {
   },
   components: {
     CardList,
+    Sidebar,
   },
 }
 </script>
