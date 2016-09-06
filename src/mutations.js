@@ -16,8 +16,8 @@ export default {
     state.isImportModalOpen = !state.isImportModalOpen
   },
 
-  CHANGE_CURRENT_CARD(state, card) {
-    state.currentCard = card
+  CHANGE_CURRENT_CARD(state, cardKey) {
+    state.currentCardID = cardKey
   },
 
   IMPORT_TASKS(state, tasksList) {

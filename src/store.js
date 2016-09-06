@@ -12,7 +12,7 @@ const state = {
   loading: true,
   isImportModalOpen: false,
   isCardModalOpen: false,
-  currentCard: {},
+  currentCardID: null,
 }
 
 const firebase = require('firebase/app')

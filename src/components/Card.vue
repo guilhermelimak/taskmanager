@@ -1,5 +1,7 @@
 <template>
-<div class="card is-fullwidth" :id="card.key">
+<div class="card is-fullwidth"
+  @click="selectCard(card.key)"
+  :id="card.key">
   <header class="card-header">
     <p class="card-header-title">
       {{ card.title }}
@@ -15,10 +17,6 @@
       <p class="card__description">
         {{ card.description }}
       </p>
-
-<!--  <p class="card__stats"><strong>Development: </strong>{{ card.development_hours }}h</p>
-      <p class="card__stats"><strong>Testing: </strong>{{ card.testing_hours }}h</p>
-      <p class="card__stats"><strong>Analysis: </strong>{{ card.analysis_hours }}h</p> -->
     </div>
   </div>
 
@@ -29,8 +27,7 @@
       Edit
     </a>
 
-    <a
-      @click="deleteCard(card.key)"
+    <a @click="deleteCard(card.key)"
       class="card-footer-item">
       Delete
     </a>
@@ -39,7 +36,7 @@
 </template>
 
 <script>
-import { deleteCard, editCard } from 'actions'
+import { deleteCard, toggleSidebar, editCard, updateCurrentCard } from 'actions'
 
 export default {
   props: {
@@ -48,9 +45,17 @@ export default {
       required: true,
     },
   },
+  methods: {
+    selectCard() {
+      this.updateCurrentCard(this.card.key)
+      this.toggleSidebar()
+    },
+  },
   vuex: {
     actions: {
       editCard,
+      updateCurrentCard,
+      toggleSidebar,
       deleteCard,
     },
   },
@@ -75,6 +80,10 @@ export default {
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3) !important;
 
     opacity: 1 !important;
+  }
+
+  &__description {
+    word-break: break-word;
   }
 }
 </style>
