@@ -1,7 +1,12 @@
 <template>
 <div class="sidebar sidebar__container box depth-4" :class="{ 'is-open': isSidebarOpen }">
   <div class="sidebar__content">
-    <h2 class="title is-4">{{ currentCard.title }}</h2>
+    <h2 class="title is-4">
+      {{ currentCard.title }}
+      <i class="fa fa-close sidebar__close-button"
+        @click="toggleSidebar">
+      </i>
+    </h2>
     <p>{{ currentCard.description }}</p>
     <hr>
     <ul>
@@ -21,7 +26,8 @@
     </div>
 
     <div class="sidebar__log-work">
-      <p class="sidebar__title title is-6">Comments</p>
+      <p class="sidebar__title title is-6">Hours spent  </p>
+      <li>{{ currentCard.hours }}h</li>
     </div>
   </div>
 </div>
@@ -29,9 +35,13 @@
 
 <script>
 import { currentCard, isSidebarOpen } from 'getters'
+import { toggleSidebar } from 'actions'
 
 export default {
   vuex: {
+    actions: {
+      toggleSidebar,
+    },
     getters: {
       currentCard,
       isSidebarOpen,
@@ -55,6 +65,12 @@ export default {
       position: relative;
       right: 0;
     }
+  }
+
+  &__close-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
   }
 
   &__title {
