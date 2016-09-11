@@ -1,17 +1,15 @@
 <template>
   <import-modal></import-modal>
-  <card-modal></card-modal>
   <navbar></navbar>
   <dashboard></dashboard>
 </template>
 
 <script>
 import Dashboard from 'components/Dashboard.vue'
-import CardModal from 'components/CardModal.vue'
 import ImportModal from 'components/ImportModal.vue'
 import Navbar from 'components/Navbar.vue'
 
-import { replaceState, newCardModal } from 'actions'
+import { replaceState } from 'actions'
 import store, { database } from 'store'
 
 export default {
@@ -27,12 +25,10 @@ export default {
   vuex: {
     actions: {
       replaceState,
-      newCardModal,
     },
   },
   components: {
     Dashboard,
-    CardModal,
     ImportModal,
     Navbar,
   },
@@ -56,7 +52,7 @@ html {
 body {
   overflow-x: auto;
   height: 100%;
-  background-color: #625A6A;
+  background-color: #868686;
   font-family: Helvetica, sans-serif;
 }
 </style>

@@ -1,6 +1,16 @@
 import { database } from 'store'
 import { emptyCard } from 'util'
 
+export const importTasks = ({ dispatch }, tasksList) => {
+  const tasksObj = JSON.parse(tasksList).tasks
+
+  for (const key in tasksObj) {
+    tasksObj[key] = { ...tasksObj[key], listID: 'a' }
+  }
+
+  database.ref('cards/').set(tasksObj)
+}
+
 export const moveCard = ({ dispatch }, event) => {
   database.ref(`cards/${event.cardID}/`).update({ listID: event.targetListID })
 }
@@ -32,30 +42,14 @@ export const editCard = ({ dispatch }, card) => {
   dispatch('TOGGLE_CARD_MODAL')
 }
 
-export const newCardModal = ({ dispatch }, listID) => {
-  dispatch('CHANGE_CURRENT_CARD', { ...emptyCard, listID })
-  dispatch('TOGGLE_CARD_MODAL')
-}
-
 export const replaceState = ({ dispatch }, newState) => {
   dispatch('REPLACE_STATE', newState)
   dispatch('DISABLE_LOADING')
 }
 
-export const toggleCardModal = ({ dispatch }) => dispatch('TOGGLE_CARD_MODAL')
 export const toggleImportModal = ({ dispatch }) => dispatch('TOGGLE_IMPORT_MODAL')
 export const toggleSidebar = ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
 
 export const updateCurrentCard = ({ dispatch }, cardKey) => {
   dispatch('CHANGE_CURRENT_CARD', cardKey)
-}
-
-export const importTasks = ({ dispatch }, tasksList) => {
-  const tasksObj = JSON.parse(tasksList).tasks
-
-  for (const key in tasksObj) {
-    tasksObj[key] = { ...tasksObj[key], listID: 'a' }
-  }
-
-  database.ref('cards/').set(tasksObj)
 }

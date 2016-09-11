@@ -10,7 +10,7 @@
       {{ list.name }}
     </strong>
 
-    <span @click="newCardModal(key)" class="icon level-right">
+    <span @click="" class="icon level-right">
       <i class="fa fa-plus-circle card-list__add-button is-primary"></i>
     </span>
   </div>
@@ -27,7 +27,7 @@
 <script>
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
-import { moveCard, newCardModal } from 'actions'
+import { moveCard } from 'actions'
 
 export default {
   props: {
@@ -74,7 +74,6 @@ export default {
   },
   vuex: {
     actions: {
-      newCardModal,
       moveCard,
     },
   },
