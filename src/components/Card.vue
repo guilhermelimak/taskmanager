@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { deleteCard, toggleSidebar, editCard, updateCurrentCard } from 'actions'
+import { deleteCard, toggleSidebar, editCard, changeCurrentCard } from 'actions'
 import { currentCardID, isSidebarOpen } from 'getters'
 
 export default {
@@ -56,7 +56,7 @@ export default {
         this.toggleSidebar()
       }
 
-      this.updateCurrentCard(this.card.key)
+      this.changeCurrentCard(this.card.key)
     },
   },
   vuex: {
@@ -66,7 +66,7 @@ export default {
     },
     actions: {
       editCard,
-      updateCurrentCard,
+      changeCurrentCard,
       toggleSidebar,
       deleteCard,
     },

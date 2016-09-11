@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { updateCurrentCard, createOrUpdateCard } from 'actions'
+import { changeCurrentCard, createOrUpdateCard } from 'actions'
 
 export default {
   props: {
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     update() {
-      this.updateCurrentCard(this.card)
+      this.changeCurrentCard(this.card)
     },
     saveCard() {
       this.createOrUpdateCard(this.card)
@@ -46,7 +46,7 @@ export default {
   },
   vuex: {
     actions: {
-      updateCurrentCard,
+      changeCurrentCard,
       createOrUpdateCard,
     },
   },

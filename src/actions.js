@@ -52,6 +52,6 @@ export const replaceState = ({ dispatch }, newState) => {
 export const toggleImportModal = ({ dispatch }) => dispatch('TOGGLE_IMPORT_MODAL')
 export const toggleSidebar = ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
 
-export const updateCurrentCard = ({ dispatch }, cardKey) => {
+export const changeCurrentCard = ({ dispatch }, cardKey) => {
   dispatch('CHANGE_CURRENT_CARD', cardKey)
 }
