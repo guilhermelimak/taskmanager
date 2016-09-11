@@ -1,5 +1,5 @@
 <template>
-<div class="nav">
+<div class="nav navbar">
   <div class="nav-right">
     <div class="nav-item">
       <a class="button is-outlined is-primary" @click="toggleImportModal">
@@ -28,11 +28,9 @@ export default {
 </script>
 
 <style lang="sass">
-$navbar-bg-color: #342A40;
+$navbar-bg-color: #212725;
+
 .navbar {
-  height: 40px;
-  width: 100%;
   background-color: $navbar-bg-color;
-  position: absolute;
 }
 </style>
