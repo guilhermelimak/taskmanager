@@ -16,7 +16,9 @@ export const moveCard = ({ dispatch }, event) => {
 }
 
 export const deleteCard = ({ dispatch }, cardID) => {
-  database.ref(`cards/${cardID}/`).remove()
+  if (window.confirm('Are you sure you want to delete?')) {
+    database.ref(`cards/${cardID}/`).remove()
+  }
 }
 
 export const createOrUpdateCard = ({ dispatch }, newCard) => {
