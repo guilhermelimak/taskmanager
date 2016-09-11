@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from 'mutations'
 
-import config from '../config'
+import { prod, dev } from '../config'
 
 Vue.use(Vuex)
 
@@ -11,7 +11,6 @@ const state = {
   cards: null,
   loading: true,
   isImportModalOpen: false,
-  isCardModalOpen: false,
   isSidebarOpen: false,
   currentCardID: null,
 }
@@ -19,7 +18,7 @@ const state = {
 const firebase = require('firebase/app')
 require('firebase/database')
 
-firebase.initializeApp(config)
+firebase.initializeApp(dev)
 export const database = firebase.database()
 
 export default new Vuex.Store({
