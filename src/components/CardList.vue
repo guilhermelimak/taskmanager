@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="sass">
-$list-max-width: 270px;
+$list-max-width: 230px;
 $list-bg-color: #fdfdfd;
 
 .card-list {
@@ -92,7 +92,8 @@ $list-bg-color: #fdfdfd;
     background-color: $list-bg-color;
     margin: 0 9px;
     margin-bottom: 0 !important;
-    width: $list-max-width;
+    min-width: $list-max-width !important;
+    max-width: $list-max-width !important;
     padding: 6px;
   }
 

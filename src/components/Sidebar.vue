@@ -14,19 +14,32 @@
       <li>Analysis: {{ currentCard.analysis_duration }}h</li>
       <li>Development: {{ currentCard.development_duration }}h</li>
       <li>Testing: {{ currentCard.testing_duration }}h</li>
-      <hr>
     </ul>
+
+    <hr>
+
     <div class="sidebar__comments">
-      <p class="sidebar__title title is-6">Comments</p>
+      <p class="sidebar__title title is-6">
+        Comments
+      </p>
       <ul>
-        <li><p>commente steds</p></li>
-        <hr class="comments__divider">
-        <li>outro comentario</li>
+        <div v-for="comment in currentCard.comments">
+          <li><p>{{ comment }}</p></li>
+          <hr class="comments__divider">
+        </div>
       </ul>
+      <input
+        @keyup.enter="insertComment"
+        v-model="commentText"
+        type="text"
+        class="input is-small comments__input">
     </div>
 
-    <div class="sidebar__log-work">
-      <p class="sidebar__title title is-6">Hours spent  </p>
+    <div class="sidebar__comments">
+      <p class="sidebar__title title is-6">
+        Hours spent
+        <i class="fa fa-plus is-pulled-right is-small"></i>
+      </p>
       <li>{{ currentCard.hours }}h</li>
     </div>
   </div>
@@ -35,12 +48,24 @@
 
 <script>
 import { currentCard, isSidebarOpen } from 'getters'
-import { toggleSidebar } from 'actions'
+import { toggleSidebar, addComment } from 'actions'
 
 export default {
+  data() {
+    return {
+      commentText: '',
+    }
+  },
+  methods: {
+    insertComment() {
+      this.addComment(this.commentText)
+      this.commentText = ''
+    },
+  },
   vuex: {
     actions: {
       toggleSidebar,
+      addComment,
     },
     getters: {
       currentCard,
@@ -75,6 +100,7 @@ export default {
 
   &__title {
     margin-bottom: 10px;
+    line-height: 21px;
   }
 
   &__comments {
@@ -87,8 +113,8 @@ export default {
 }
 
 .comments {
-  &__divider {
-
+  &__input {
+    margin-bottom: 10px;
   }
 }
 </style>

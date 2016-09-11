@@ -8,16 +8,29 @@ export const importTasks = ({ dispatch }, tasksList) => {
     tasksObj[key] = { ...tasksObj[key], listID: 'a' }
   }
 
-  database.ref('cards/').set(tasksObj)
+  database
+  .ref('cards/')
+  .set(tasksObj)
 }
 
 export const moveCard = ({ dispatch }, event) => {
-  database.ref(`cards/${event.cardID}/`).update({ listID: event.targetListID })
+  database
+  .ref(`cards/${event.cardID}/`)
+  .update({ listID: event.targetListID })
+}
+
+export const addComment = ({ dispatch, state }, comment) => {
+  database
+  .ref(`cards/${state.currentCardID}/comments/`)
+  .push()
+  .set(comment)
 }
 
 export const deleteCard = ({ dispatch }, cardID) => {
-  if (window.confirm('Are you sure you want to delete?')) {
-    database.ref(`cards/${cardID}/`).remove()
+  if (confirm('Are you sure you want to delete?')) {
+    database
+    .ref(`cards/${cardID}/`)
+    .remove()
   }
 }
 
