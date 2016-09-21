@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { deleteCard, toggleSidebar, editCard, changeCurrentCard } from 'actions'
+import { deleteCard, toggleSidebar, changeCurrentCard } from 'actions'
 import { currentCardID, isSidebarOpen } from 'getters'
 
 export default {
@@ -66,7 +66,6 @@ export default {
       isSidebarOpen,
     },
     actions: {
-      editCard,
       changeCurrentCard,
       toggleSidebar,
       deleteCard,
