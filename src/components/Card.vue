@@ -1,5 +1,6 @@
 <template>
 <div class="card is-fullwidth"
+  :class="{'card-selected': isSelected}"
   @click="selectCard(card.key)"
   :id="card.key">
   <header class="card-header">
@@ -23,11 +24,13 @@
   <footer class="card-footer">
     <a v-if="!isEditable"
       @click="editCard(card)"
+      @click.stop
       class="card-footer-item">
       Edit
     </a>
 
     <a @click="deleteCard(card.key)"
+      @click.stop
       class="card-footer-item">
       Delete
     </a>
@@ -45,6 +48,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  computed: {
+    isSelected() {
+      return this.card.key === this.currentCardID
+    }
   },
   methods: {
     selectCard() {
@@ -78,6 +86,10 @@ export default {
 .card {
   font-size: 12px;
   margin-bottom: 7px;
+
+  &-selected {
+    filter: invert(100%);
+  }
 
   &__stats {
     margin: 3px 0 !important;
