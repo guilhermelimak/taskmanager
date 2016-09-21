@@ -1,15 +1,24 @@
 <template>
 <div class="sidebar sidebar__container box depth-4" :class="{ 'is-open': isSidebarOpen }">
   <div class="sidebar__content">
+    <i class="fa fa-close sidebar__close-button is-primary"
+      @click="toggleSidebar">
+    </i>
+
     <input class="sidebar__title title is-4" v-model="currentCard.title" @keyup="saveCard">
-      <i class="fa fa-close sidebar__close-button is-primary"
-        @click="toggleSidebar">
-      </i>
+
     <p class="sidebar__title title is-6">
       Description
     </p>
-    <textarea @keyup="saveCard" class="word-wrap sidebar__description" v-model="currentCard.description"></textarea>
+
+    <textarea
+      @keyup="saveCard"
+      class="word-wrap sidebar__description"
+      v-model="currentCard.description">
+    </textarea>
+
     <hr>
+
     <ul>
       <p class="sidebar__title title is-6">Estimated time</p>
       <li>Analysis: {{ currentCard.analysis_duration }}h</li>
@@ -74,6 +83,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '../general';
+
 .sidebar {
   &__container {
     transition: transform 0.3s;
@@ -91,7 +102,7 @@ export default {
   }
 
   &__close-button {
-    color: #1fc8db;
+    color: $blue-primary;
     position: fixed;
     font-size: 14px;
     top: 10px;

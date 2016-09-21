@@ -41,29 +41,6 @@ export const deleteCard = ({ dispatch }, cardKey) => {
   }
 }
 
-export const createOrUpdateCard = ({ dispatch }, newCard) => {
-  let cardRef
-  let cardID
-
-  if (!newCard.key) {
-    cardRef = database.ref('cards/').push()
-    cardID = cardRef.key
-  } else {
-    cardID = newCard.key
-    cardRef = database.ref(`cards/${cardID}/`)
-  }
-
-  cardRef.update({ ...newCard, key: cardID })
-
-  dispatch('TOGGLE_CARD_MODAL')
-  dispatch('CHANGE_CURRENT_CARD', { ...emptyCard })
-}
-
-export const editCard = ({ dispatch }, card) => {
-  dispatch('CHANGE_CURRENT_CARD', card)
-  dispatch('TOGGLE_CARD_MODAL')
-}
-
 export const replaceState = ({ dispatch }, newState) => {
   dispatch('REPLACE_STATE', newState)
   dispatch('DISABLE_LOADING')

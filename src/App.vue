@@ -45,13 +45,12 @@ export default {
 }
 
 html {
-  filter: invert(100%);
   height: 100%;
   overflow-y: auto;
 }
 
 body {
-  overflow-x: auto;
+  overflow-x: hidden;
   height: 100%;
   background-color: #868686;
   font-family: Helvetica, sans-serif;

@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { deleteCard, toggleSidebar, editCard, changeCurrentCard } from 'actions'
+import { deleteCard, toggleSidebar, changeCurrentCard } from 'actions'
 import { currentCardID, isSidebarOpen } from 'getters'
 
 export default {
@@ -45,7 +45,7 @@ export default {
   computed: {
     isSelected() {
       return this.card.key === this.currentCardID
-    }
+    },
   },
   methods: {
     selectCard() {
@@ -66,7 +66,6 @@ export default {
       isSidebarOpen,
     },
     actions: {
-      editCard,
       changeCurrentCard,
       toggleSidebar,
       deleteCard,
@@ -76,12 +75,16 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '../general';
+
 .card {
   font-size: 12px;
-  margin-bottom: 7px;
+  margin: 1px 1px 7px 1px;
+  padding: 1px;
+  border: 1px solid transparent;
 
   &-selected {
-    filter: invert(80%);
+    border: 1px solid $blue-primary;
   }
 
   &__stats {
@@ -93,8 +96,8 @@ export default {
     transition: all 0.1s ease-in-out;
   }
 
-  &:hover :not(.card-selected) {
-    filter: invert(20%);
+  &:hover:not(.card-selected) {
+    filter: opacity(0.65);
   }
 
   &__description {

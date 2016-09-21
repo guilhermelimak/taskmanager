@@ -75,7 +75,7 @@ export default {
   vuex: {
     actions: {
       moveCard,
-      addNewCard
+      addNewCard,
     },
   },
   components: {
@@ -85,12 +85,15 @@ export default {
 </script>
 
 <style lang="sass">
-$list-max-width: 230px;
+@import '../general';
+
+$list-max-width: 260px;
 $list-bg-color: #fdfdfd;
 
 .card-list {
   &__container {
     background-color: $list-bg-color;
+    border: 2px solid #bbb;
     margin: 0 9px;
     margin-bottom: 0 !important;
     min-width: $list-max-width !important;
@@ -110,7 +113,7 @@ $list-bg-color: #fdfdfd;
   }
 
   &__add-button {
-    color: #1fc8db;
+    color: $blue-primary;
     font-size: 14pt !important;
 
     &:hover {
