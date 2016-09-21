@@ -15,7 +15,7 @@
       <a class="import__button button is-outlined is-primary" @click="importTasks(tasks)">Import</a>
     </div>
   </div>
-  <button class="modal-close"></button>
+  <button class="modal-close" @click="toggleImportModal"></button>
 </div>
 </template>
 
