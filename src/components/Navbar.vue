@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="sass">
-$navbar-bg-color: #212725;
+$navbar-bg-color: #FFF;
 
 .navbar {
   background-color: $navbar-bg-color;

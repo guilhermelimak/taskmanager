@@ -1,13 +1,14 @@
 <template>
 <div class="sidebar sidebar__container box depth-4" :class="{ 'is-open': isSidebarOpen }">
   <div class="sidebar__content">
-    <h2 class="title is-4">
-      {{ currentCard.title }}
-      <i class="fa fa-close sidebar__close-button"
+    <input class="sidebar__title title is-4" v-model="currentCard.title" @keyup="saveCard">
+      <i class="fa fa-close sidebar__close-button is-primary"
         @click="toggleSidebar">
       </i>
-    </h2>
-    <p>{{ currentCard.description }}</p>
+    <p class="sidebar__title title is-6">
+      Description
+    </p>
+    <textarea @keyup="saveCard" class="word-wrap sidebar__description" v-model="currentCard.description"></textarea>
     <hr>
     <ul>
       <p class="sidebar__title title is-6">Estimated time</p>
@@ -34,21 +35,13 @@
         type="text"
         class="input is-small comments__input">
     </div>
-
-    <div class="sidebar__comments">
-      <p class="sidebar__title title is-6">
-        Hours spent
-        <i class="fa fa-plus is-pulled-right is-small"></i>
-      </p>
-      <li>{{ currentCard.hours }}h</li>
-    </div>
   </div>
 </div>
 </template>
 
 <script>
-import { currentCard, isSidebarOpen } from 'getters'
-import { toggleSidebar, addComment } from 'actions'
+import { currentCard, isSidebarOpen, currentCardID } from 'getters'
+import { toggleSidebar, addComment, updateCard } from 'actions'
 
 export default {
   data() {
@@ -61,13 +54,18 @@ export default {
       this.addComment(this.commentText)
       this.commentText = ''
     },
+    saveCard() {
+      this.updateCard(this.currentCardID, this.currentCard)
+    },
   },
   vuex: {
     actions: {
       toggleSidebar,
       addComment,
+      updateCard,
     },
     getters: {
+      currentCardID,
       currentCard,
       isSidebarOpen,
     },
@@ -93,13 +91,25 @@ export default {
   }
 
   &__close-button {
+    color: #1fc8db;
     position: fixed;
+    font-size: 14px;
     top: 10px;
     right: 10px;
   }
 
+  &__description {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    min-height: 200px;
+    border: none;
+  }
+
   &__title {
+    border: none;
     margin-bottom: 10px;
+    width: 100%;
     line-height: 21px;
   }
 

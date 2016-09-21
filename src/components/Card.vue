@@ -88,7 +88,7 @@ export default {
   margin-bottom: 7px;
 
   &-selected {
-    filter: invert(100%);
+    filter: invert(80%);
   }
 
   &__stats {
@@ -97,13 +97,14 @@ export default {
 
   &:hover,
   &:not(:hover){
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
   }
 
-  &:hover {
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3) !important;
+  &:hover :not(.card-selected) {
+  //   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3) !important;
 
-    opacity: 1 !important;
+    // opacity: 1 !important;
+    filter: invert(20%);
   }
 
   &__description {

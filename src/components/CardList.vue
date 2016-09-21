@@ -11,7 +11,7 @@
     </strong>
 
     <span @click="" class="icon level-right">
-      <i class="fa fa-plus-circle card-list__add-button is-primary"></i>
+      <i class="fa fa-plus-circle card-list__add-button"></i>
     </span>
   </div>
 

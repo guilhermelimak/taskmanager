@@ -13,6 +13,13 @@ export const importTasks = ({ dispatch }, tasksList) => {
   .set(tasksObj)
 }
 
+export const updateCard = ({ dispatch }, cardID, card) => {
+  database
+  .ref(`cards`)
+  .child(cardID)
+  .set(card)
+}
+
 export const moveCard = ({ dispatch }, event) => {
   database
   .ref(`cards/${event.cardID}/`)
