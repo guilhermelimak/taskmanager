@@ -22,7 +22,7 @@ export const updateCard = ({ dispatch }, cardKey, card) => {
 
 export const moveCard = ({ dispatch }, event) => {
   database
-  .ref(`cards/${event.cardKey}/`)
+  .ref(`cards/${event.cardID}/`)
   .update({ listID: event.targetListID })
 }
 
