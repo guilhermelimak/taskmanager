@@ -11,7 +11,7 @@
     </strong>
 
     <span @click="" class="icon level-right">
-      <i class="fa fa-plus-circle card-list__add-button"></i>
+      <i @click="addNewCard(key)" class="fa fa-plus-circle card-list__add-button"></i>
     </span>
   </div>
 
@@ -27,7 +27,7 @@
 <script>
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
-import { moveCard } from 'actions'
+import { moveCard, addNewCard } from 'actions'
 
 export default {
   props: {
@@ -75,6 +75,7 @@ export default {
   vuex: {
     actions: {
       moveCard,
+      addNewCard
     },
   },
   components: {

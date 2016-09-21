@@ -13,16 +13,16 @@ export const importTasks = ({ dispatch }, tasksList) => {
   .set(tasksObj)
 }
 
-export const updateCard = ({ dispatch }, cardID, card) => {
+export const updateCard = ({ dispatch }, cardKey, card) => {
   database
   .ref(`cards`)
-  .child(cardID)
+  .child(cardKey)
   .set(card)
 }
 
 export const moveCard = ({ dispatch }, event) => {
   database
-  .ref(`cards/${event.cardID}/`)
+  .ref(`cards/${event.cardKey}/`)
   .update({ listID: event.targetListID })
 }
 
@@ -33,10 +33,10 @@ export const addComment = ({ dispatch, state }, comment) => {
   .set(comment)
 }
 
-export const deleteCard = ({ dispatch }, cardID) => {
+export const deleteCard = ({ dispatch }, cardKey) => {
   if (confirm('Are you sure you want to delete?')) {
     database
-    .ref(`cards/${cardID}/`)
+    .ref(`cards/${cardKey}/`)
     .remove()
   }
 }
@@ -74,4 +74,11 @@ export const toggleSidebar = ({ dispatch }) => dispatch('TOGGLE_SIDEBAR')
 
 export const changeCurrentCard = ({ dispatch }, cardKey) => {
   dispatch('CHANGE_CURRENT_CARD', cardKey)
+}
+
+export const addNewCard = ({ dispatch }, listKey) => {
+  database
+  .ref('cards/')
+  .push()
+  .set({ ...emptyCard, listID: listKey })
 }
