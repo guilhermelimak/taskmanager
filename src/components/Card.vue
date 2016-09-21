@@ -22,13 +22,6 @@
   </div>
 
   <footer class="card-footer">
-    <a v-if="!isEditable"
-      @click="editCard(card)"
-      @click.stop
-      class="card-footer-item">
-      Edit
-    </a>
-
     <a @click="deleteCard(card.key)"
       @click.stop
       class="card-footer-item">
@@ -101,9 +94,6 @@ export default {
   }
 
   &:hover :not(.card-selected) {
-  //   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3) !important;
-
-    // opacity: 1 !important;
     filter: invert(20%);
   }
 
