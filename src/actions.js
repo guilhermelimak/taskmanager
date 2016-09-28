@@ -53,6 +53,11 @@ export const changeCurrentCard = ({ dispatch }, cardKey) => {
   dispatch('CHANGE_CURRENT_CARD', cardKey)
 }
 
+
+export const changeCurrentProject = ({ dispatch }, projectID) => {
+  dispatch('CHANGE_CURRENT_PROJECT', projectID)
+}
+
 export const addNewCard = ({ dispatch }, listKey) => {
   database
   .ref('cards/')
