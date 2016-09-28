@@ -12,7 +12,7 @@
 
     <span @click="" class="icon level-right">
       <i
-        @click="addNewCard(key)"
+        @click="addNewCard(key, currentProjectID)"
         class="fa fa-plus-circle card-list__add-button">
       </i>
     </span>
@@ -31,6 +31,7 @@
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
 import { moveCard, addNewCard } from 'actions'
+import { currentProjectID } from 'getters'
 
 export default {
   props: {
@@ -79,6 +80,9 @@ export default {
     actions: {
       moveCard,
       addNewCard,
+    },
+    getters: {
+      currentProjectID,
     },
   },
   components: {

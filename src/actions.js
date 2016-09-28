@@ -61,9 +61,9 @@ export const changeCurrentProject = ({ dispatch }, projectID) => {
   dispatch('CHANGE_CURRENT_PROJECT', projectID)
 }
 
-export const addNewCard = ({ dispatch }, listKey) => {
+export const addNewCard = ({ dispatch }, listKey, projectID) => {
   database
   .ref('cards/')
   .push()
-  .set({ ...emptyCard, listID: listKey })
+  .set({ ...emptyCard, listID: listKey, projectID })
 }
