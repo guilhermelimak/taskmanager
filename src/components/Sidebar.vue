@@ -1,11 +1,16 @@
 <template>
-<div class="sidebar sidebar__container box depth-4" :class="{ 'is-open': isSidebarOpen }">
+<div
+  class="sidebar sidebar__container box depth-4"
+  :class="{ 'is-open': isSidebarOpen }">
   <div class="sidebar__content">
     <i class="fa fa-close sidebar__close-button is-primary"
       @click="toggleSidebar">
     </i>
 
-    <input class="sidebar__title title is-4" v-model="currentCard.title" @keyup="saveCard">
+    <input
+      class="sidebar__title title is-4"
+      v-model="currentCard.title"
+      @keyup="saveCard">
 
     <p class="sidebar__title title is-6">
       Description

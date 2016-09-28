@@ -12,7 +12,11 @@
           placeholder="Paste the json here"
           v-model="tasks">
         </textarea>
-      <a class="import__button button is-outlined is-primary" @click="importTasks(tasks)">Import</a>
+      <a
+        class="import__button button is-outlined is-primary"
+        @click="importTasks(tasks)">
+        Import
+      </a>
     </div>
   </div>
   <button class="modal-close" @click="toggleImportModal"></button>

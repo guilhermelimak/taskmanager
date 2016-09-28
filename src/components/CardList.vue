@@ -2,7 +2,7 @@
 <div @drop="onComponentDrop"
      @dragover.prevent
      :id="key"
-     class="depth-3 card-list__container"
+     class="depth-2 card-list__container"
      bag>
 
   <div class="card-list__header level">
@@ -11,7 +11,10 @@
     </strong>
 
     <span @click="" class="icon level-right">
-      <i @click="addNewCard(key)" class="fa fa-plus-circle card-list__add-button"></i>
+      <i
+        @click="addNewCard(key)"
+        class="fa fa-plus-circle card-list__add-button">
+      </i>
     </span>
   </div>
 
@@ -93,7 +96,7 @@ $list-bg-color: #fdfdfd;
 .card-list {
   &__container {
     background-color: $list-bg-color;
-    border: 2px solid #bbb;
+    border: 1px solid #bbb;
     margin: 0 9px;
     margin-bottom: 0 !important;
     min-width: $list-max-width !important;
