@@ -15,7 +15,7 @@ export const importTasks = ({ dispatch }, tasksList) => {
 
 export const updateCard = ({ dispatch }, cardKey, card) => {
   database
-  .ref(`cards`)
+  .ref('cards')
   .child(cardKey)
   .set(card)
 }
@@ -53,6 +53,9 @@ export const changeCurrentCard = ({ dispatch }, cardKey) => {
   dispatch('CHANGE_CURRENT_CARD', cardKey)
 }
 
+export const hideWelcomeScreen = ({ dispatch }) => {
+  dispatch('HIDE_WELCOME_SCREEN')
+}
 
 export const changeCurrentProject = ({ dispatch }, projectID) => {
   dispatch('CHANGE_CURRENT_PROJECT', projectID)

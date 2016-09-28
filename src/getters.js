@@ -4,6 +4,7 @@ export const lists = state => state.lists
 export const isCardModalOpen = state => state.isCardModalOpen
 export const isImportModalOpen = state => state.isImportModalOpen
 export const isSidebarOpen = state => state.isSidebarOpen
+export const isWelcomeScreenOpen = state => state.isWelcomeScreenOpen
 
 export const currentCardID = state => state.currentCardID
 
