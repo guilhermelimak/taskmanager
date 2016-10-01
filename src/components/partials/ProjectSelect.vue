@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import { projects, currentProjectID } from 'getters'
+import { projects, currentProjectId } from 'getters'
 import { changeCurrentProject } from 'actions'
 
 export default {
   computed: {
     selected: {
       get() {
-        return this.currentProjectID
+        return this.currentProjectId
       },
       set(val) {
         this.changeCurrentProject(val)
@@ -27,7 +27,7 @@ export default {
   vuex: {
     getters: {
       projects,
-      currentProjectID,
+      currentProjectId,
     },
     actions: {
       changeCurrentProject,

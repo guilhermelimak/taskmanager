@@ -14,7 +14,7 @@
 import Vue from 'vue'
 import CardList from 'components/CardList.vue'
 import Sidebar from 'components/Sidebar.vue'
-import { lists, cards, currentProjectID } from 'getters'
+import { lists, cards, currentProjectId } from 'getters'
 import { database } from 'store'
 import { replaceState } from 'actions'
 
@@ -32,7 +32,7 @@ export default {
 
       if (this.cards) {
         Object.keys(this.cards).filter(key => {
-          if (`${this.cards[key].projectID}` === this.currentProjectID) {
+          if (`${this.cards[key].projectId}` === this.currentProjectId) {
             Vue.set(filtered, key, this.cards[key])
           }
         })
@@ -48,7 +48,7 @@ export default {
     getters: {
       cards,
       lists,
-      currentProjectID,
+      currentProjectId,
     },
   },
   components: {

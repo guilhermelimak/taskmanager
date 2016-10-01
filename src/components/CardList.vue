@@ -12,7 +12,7 @@
 
     <span @click="" class="icon level-right">
       <i
-        @click="addNewCard(key, currentProjectID)"
+        @click="addNewCard(key, currentProjectId)"
         class="fa fa-plus-circle card-list__add-button">
       </i>
     </span>
@@ -31,7 +31,7 @@
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
 import { moveCard, addNewCard } from 'actions'
-import { currentProjectID } from 'getters'
+import { currentProjectId } from 'getters'
 
 export default {
   props: {
@@ -52,7 +52,7 @@ export default {
       const filtered = []
       if (this.cards) {
         Object.keys(this.cards).filter(key => {
-          if (`${this.cards[key].listID}` === this.key) {
+          if (`${this.cards[key].listId}` === this.key) {
             const card = { ...this.cards[key], key }
             filtered.$set(filtered.length, card)
           }
@@ -63,14 +63,14 @@ export default {
   },
   methods: {
     onComponentDrag(e) {
-      e.dataTransfer.setData('cardID', e.srcElement.id)
-      e.dataTransfer.setData('srcListID', e.srcElement.parentNode.id)
+      e.dataTransfer.setData('cardId', e.srcElement.id)
+      e.dataTransfer.setData('srcListId', e.srcElement.parentNode.id)
     },
     onComponentDrop(e) {
       const event = {
-        cardID: e.dataTransfer.getData('cardID'),
-        srcListID: e.dataTransfer.getData('srcListID'),
-        targetListID: getParentBag(e.srcElement).id,
+        cardId: e.dataTransfer.getData('cardId'),
+        srcListId: e.dataTransfer.getData('srcListId'),
+        targetListId: getParentBag(e.srcElement).id,
       }
 
       this.moveCard(event)
@@ -82,7 +82,7 @@ export default {
       addNewCard,
     },
     getters: {
-      currentProjectID,
+      currentProjectId,
     },
   },
   components: {
