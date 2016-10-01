@@ -78,7 +78,7 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'production') {
   // Remove sourcemaps in production
-  delete modules.exports.devtool
+  delete module.exports.devtool
 
   module.exports.output.publicPath = "https://taskmanager-ad463.firebaseapp.com/"
   // http://vue-loader.vuejs.org/en/workflow/production.html
