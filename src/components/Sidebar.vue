@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { currentCard, isSidebarOpen, currentCardID } from 'getters'
+import { currentCard, isSidebarOpen, currentCardId } from 'getters'
 import { toggleSidebar, addComment, updateCard } from 'actions'
 
 export default {
@@ -71,7 +71,7 @@ export default {
       this.commentText = ''
     },
     saveCard() {
-      this.updateCard(this.currentCardID, this.currentCard)
+      this.updateCard(this.currentCardId, this.currentCard)
     },
   },
   vuex: {
@@ -81,7 +81,7 @@ export default {
       updateCard,
     },
     getters: {
-      currentCardID,
+      currentCardId,
       currentCard,
       isSidebarOpen,
     },

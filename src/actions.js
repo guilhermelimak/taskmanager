@@ -5,7 +5,7 @@ export const importTasks = ({ dispatch }, tasksList) => {
   const tasksObj = JSON.parse(tasksList).tasks
 
   for (const key in tasksObj) {
-    tasksObj[key] = { ...tasksObj[key], listID: 'a' }
+    tasksObj[key] = { ...tasksObj[key], listId: 'a' }
   }
 
   database
@@ -22,13 +22,13 @@ export const updateCard = ({ dispatch }, cardKey, card) => {
 
 export const moveCard = ({ dispatch }, event) => {
   database
-  .ref(`cards/${event.cardID}/`)
-  .update({ listID: event.targetListID })
+  .ref(`cards/${event.cardId}/`)
+  .update({ listId: event.targetListId })
 }
 
 export const addComment = ({ dispatch, state }, comment) => {
   database
-  .ref(`cards/${state.currentCardID}/comments/`)
+  .ref(`cards/${state.currentCardId}/comments/`)
   .push()
   .set(comment)
 }
@@ -57,13 +57,13 @@ export const hideWelcomeScreen = ({ dispatch }) => {
   dispatch('HIDE_WELCOME_SCREEN')
 }
 
-export const changeCurrentProject = ({ dispatch }, projectID) => {
-  dispatch('CHANGE_CURRENT_PROJECT', projectID)
+export const changeCurrentProject = ({ dispatch }, projectId) => {
+  dispatch('CHANGE_CURRENT_PROJECT', projectId)
 }
 
-export const addNewCard = ({ dispatch }, listKey, projectID) => {
+export const addNewCard = ({ dispatch }, listKey, projectId) => {
   database
   .ref('cards/')
   .push()
-  .set({ ...emptyCard, listID: listKey, projectID })
+  .set({ ...emptyCard, listId: listKey, projectId })
 }

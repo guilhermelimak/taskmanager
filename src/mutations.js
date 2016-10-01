@@ -25,21 +25,21 @@ export default {
     state.isSidebarOpen = !state.isSidebarOpen
   },
 
-  CHANGE_CURRENT_PROJECT(state, projectID) {
-    state.currentProjectID = projectID
-    state.currentCardID = null
+  CHANGE_CURRENT_PROJECT(state, projectId) {
+    state.currentProjectId = projectId
+    state.currentCardId = null
     state.isSidebarOpen = false
   },
 
   CHANGE_CURRENT_CARD(state, cardKey) {
-    state.currentCardID = cardKey
+    state.currentCardId = cardKey
   },
 
   IMPORT_TASKS(state, tasksList) {
     const tasksObj = JSON.parse(tasksList)
 
     for (const key in tasksObj.tasks) {
-      state.cards[key] = { ...tasksObj.tasks[key], listID: 'a' }
+      state.cards[key] = { ...tasksObj.tasks[key], listId: 'a' }
     }
   },
 }

@@ -33,7 +33,7 @@
 
 <script>
 import { deleteCard, toggleSidebar, changeCurrentCard } from 'actions'
-import { currentCardID, isSidebarOpen } from 'getters'
+import { currentCardId, isSidebarOpen } from 'getters'
 
 export default {
   props: {
@@ -44,13 +44,13 @@ export default {
   },
   computed: {
     isSelected() {
-      return this.card.key === this.currentCardID
+      return this.card.key === this.currentCardId
     },
   },
   methods: {
     selectCard() {
       if (this.isSidebarOpen) {
-        if (this.card.key === this.currentCardID) {
+        if (this.card.key === this.currentCardId) {
           this.toggleSidebar()
         }
       } else {
@@ -62,7 +62,7 @@ export default {
   },
   vuex: {
     getters: {
-      currentCardID,
+      currentCardId,
       isSidebarOpen,
     },
     actions: {

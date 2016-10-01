@@ -14,8 +14,8 @@ const state = {
   isImportModalOpen: false,
   isSidebarOpen: false,
   isWelcomeScreenOpen: true,
-  currentCardID: null,
-  currentProjectID: null,
+  currentCardId: null,
+  currentProjectId: null,
 }
 
 const firebase = require('firebase/app')
