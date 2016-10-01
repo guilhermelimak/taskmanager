@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -83,6 +84,10 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.output.publicPath = "https://taskmanager-ad463.firebaseapp.com/"
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
+    new HtmlWebpackPlugin({
+      title: 'TaskManager',
+      filename: 'index.html'
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
