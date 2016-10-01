@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import { deleteCard, toggleSidebar, changeCurrentCard } from 'actions'
+import { toggleSidebar } from 'actions/uiActions'
+import { deleteCard, changeCurrentCard } from 'actions/cardActions'
 import { currentCardId, isSidebarOpen } from 'getters'
 
 export default {

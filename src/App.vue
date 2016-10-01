@@ -54,9 +54,9 @@ html {
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: auto;
   height: 100%;
-  background-color: #868686;
+  background-color: #e9e9e9;
   font-family: Helvetica, sans-serif;
 }
 </style>

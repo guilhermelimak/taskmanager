@@ -27,7 +27,7 @@
 
 <script>
 import ProjectSelect from 'components/partials/ProjectSelect.vue'
-import { toggleImportModal } from 'actions'
+import { toggleImportModal } from 'actions/uiActions'
 import { currentProject } from 'getters'
 
 export default {

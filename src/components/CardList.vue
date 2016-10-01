@@ -30,7 +30,7 @@
 <script>
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
-import { moveCard, addNewCard } from 'actions'
+import { moveCard, addNewCard } from 'actions/cardActions'
 import { currentProjectId } from 'getters'
 
 export default {
@@ -100,7 +100,7 @@ $list-bg-color: #fdfdfd;
 .card-list {
   &__container {
     background-color: $list-bg-color;
-    border: 1px solid #bbb;
+    // border: 1px solid #bbb;
     margin: 0 9px;
     margin-bottom: 0 !important;
     min-width: $list-max-width !important;
@@ -116,16 +116,16 @@ $list-bg-color: #fdfdfd;
   &__name {
     font-size: 13pt;
     font-weight: 500;
-    color: #222324 !important;
+    color: #555 !important;
   }
 
   &__add-button {
-    color: $blue-primary;
     font-size: 14pt !important;
+    color: #555;
 
     &:hover {
       cursor: pointer;
-      color: #222324;
+      color: $blue-primary;
     }
   }
 }

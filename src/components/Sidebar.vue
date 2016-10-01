@@ -57,7 +57,8 @@
 
 <script>
 import { currentCard, isSidebarOpen, currentCardId } from 'getters'
-import { toggleSidebar, addComment, updateCard } from 'actions'
+import { addComment, updateCard } from 'actions/cardActions'
+import { toggleSidebar } from 'actions/uiActions'
 
 export default {
   data() {

@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import { changeCurrentProject, hideWelcomeScreen } from 'actions'
+import { changeCurrentProject } from 'actions'
+import { hideWelcomeScreen } from 'actions/uiActions'
 import { projects, isWelcomeScreenOpen } from 'getters'
 
 export default {
