@@ -6,14 +6,12 @@
     :list="list"
     v-for="list in lists">
   </card-list>
-  <sidebar></sidebar>
 </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import CardList from 'components/CardList.vue'
-import Sidebar from 'components/Sidebar.vue'
 import { lists, cards, currentProjectId } from 'getters'
 import { database } from 'store'
 import { replaceState } from 'actions'
@@ -53,7 +51,6 @@ export default {
   },
   components: {
     CardList,
-    Sidebar,
   },
 }
 </script>

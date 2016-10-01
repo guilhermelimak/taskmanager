@@ -99,13 +99,15 @@ export default {
     margin-left: auto;
     padding: 20px;
     width: 300px;
-    transform: translateX(300px);
+    z-index: 9999;
+    overflow: auto;
+    right: 0;
+    min-height: 100%;
+    transform: translateX(500px);
+    position: fixed;
 
     &.is-open {
-      height: auto;
       transform: translateX(0);
-      position: relative;
-      right: 0;
     }
   }
 
