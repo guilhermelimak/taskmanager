@@ -9,7 +9,7 @@
 import Dashboard from 'components/Dashboard.vue'
 import ImportModal from 'components/ImportModal.vue'
 import Navbar from 'components/Navbar.vue'
-import ProjectChooseScreen from 'components/ProjectCHooseScreen.vue'
+import ProjectChooseScreen from 'components/ProjectChooseScreen.vue'
 
 import { replaceState } from 'actions'
 import store, { database } from 'store'
