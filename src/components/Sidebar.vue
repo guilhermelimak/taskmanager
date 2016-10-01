@@ -9,6 +9,7 @@
 
     <input
       class="sidebar__title title is-4"
+      placeholder="Untitled"
       v-model="currentCard.title"
       @keyup="saveCard">
 
@@ -19,6 +20,7 @@
     <textarea
       @keyup="saveCard"
       class="word-wrap sidebar__description"
+      placeholder="Card description"
       v-model="currentCard.description">
     </textarea>
 
@@ -126,6 +128,7 @@ export default {
     border: none;
     margin-bottom: 10px;
     width: 100%;
+    font-weight: bold;
     line-height: 21px;
   }
 

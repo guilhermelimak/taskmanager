@@ -1,5 +1,5 @@
 <template>
-<div class="modal" :class="{ 'is-active': isImportModalOpen }">
+<div class="modal is-active" transition="fade" transition-mode="out-in" v-if="isImportModalOpen">
   <div @click="toggleImportModal" class="modal-background"></div>
   <div class="modal-container">
     <div class="modal-content box">

@@ -45,6 +45,7 @@ export default {
 
 * {
   border-radius: 1px !important;
+  transition: all 1s ease-ease;
 }
 
 html {
