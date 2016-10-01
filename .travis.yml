@@ -2,7 +2,11 @@ language: node_js
 node_js:
   - "5.11"
 
+before_script:
+  - "npm install -g firebase"
+
 script: npm run build
+
 
 after_success:
   - firebase deploy --token ${FIREBASETOKEN}
