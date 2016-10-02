@@ -139,6 +139,8 @@ $list-bg-color: #fdfdfd;
     font-size: 13pt;
     font-weight: 500;
     color: #555 !important;
+    user-select: none;
+    cursor: default;
   }
 
   &__add-button {

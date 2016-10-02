@@ -108,6 +108,15 @@ export default {
 @import '../general';
 
 .sidebar {
+  textarea,
+  input {
+    border: 1px solid #ddd;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue-primary;
+    }
+  }
+
   &__container {
     transition: transform 0.3s;
     margin-left: auto;
@@ -136,6 +145,7 @@ export default {
   &__close-button {
     color: #555;
     position: fixed;
+    cursor: pointer;
     font-size: 14px;
     top: 5px;
     right: 5px;
