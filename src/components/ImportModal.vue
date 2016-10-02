@@ -8,8 +8,8 @@
         <textarea
           autofocus
           @keyup.enter="importTasks(tasks)"
-          class="textarea"
-          placeholder="Paste the json here"
+          class="textarea import__input"
+          :placeholder="emptyCard | json"
           v-model="tasks">
         </textarea>
       <a
@@ -27,11 +27,13 @@
 import { toggleImportModal } from 'actions/uiActions'
 import { importTasks } from 'actions'
 import { isImportModalOpen } from 'getters'
+import { emptyCard } from 'util'
 
 export default {
   data() {
     return {
       tasks: '',
+      emptyCard,
     }
   },
   vuex: {
@@ -50,6 +52,10 @@ export default {
 .import {
   &__button {
     margin-top: 20px;
+  }
+
+  &__input {
+    min-height: 200px;
   }
 }
 </style>
