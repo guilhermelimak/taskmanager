@@ -28,6 +28,7 @@
     ],
     "no-shadow": "off",
     "no-param-reassign": "off",
+    "array-callback-return": "off",
     "arrow-body-style": "off",
     "no-unexpected-multiline": "error",
     "import/no-extraneous-dependencies": "off",

@@ -1,3 +1,10 @@
+@import '../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar';
+
+.word-wrap {
+    word-wrap: break-word;
+}
+
+// Shadow
 .depth-1 {
     box-shadow: 0px 5px 20px 0 rgba(0,0,0,0.4);
 }
@@ -14,32 +21,7 @@
     box-shadow: 0px 20px 20px 0 rgba(0,0,0,0.4);
 }
 
-.word-wrap {
-    word-wrap: break-word;
-}
-
-$blue-primary: #1fc8db;
-
-
-// colors:
-// #342A40
-// #D9DBA4
-// #211E21
-// #827D7A
-// #BA2222
-
-
-// accent
-// #fd7e59
-
-// black
-// #050505
-
-// font
-// #f8f8f8
-
-// bg
-// #f0f3ec
+// Transitions
 
 .fade-transition {
   transition: opacity .3s ease;
@@ -47,3 +29,6 @@ $blue-primary: #1fc8db;
 .fade-enter, .fade-leave {
   opacity: 0;
 }
+
+// Variables
+$blue-primary: #1fc8db;

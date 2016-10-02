@@ -2,7 +2,8 @@
 <div
   class="sidebar sidebar__container box depth-4"
   :class="{ 'is-open': isSidebarOpen }">
-  <div class="sidebar__content">
+
+  <div id="sidebar-content" class="sidebar__content">
     <i class="fa fa-close sidebar__close-button is-primary"
       @click="toggleSidebar">
     </i>
@@ -51,6 +52,7 @@
         type="text"
         class="input is-small comments__input">
     </div>
+
   </div>
 </div>
 </template>
@@ -59,8 +61,15 @@
 import { currentCard, isSidebarOpen, currentCardId } from 'getters'
 import { addComment, updateCard } from 'actions/cardActions'
 import { toggleSidebar } from 'actions/uiActions'
+import Ps from 'perfect-scrollbar'
 
 export default {
+  ready() {
+    const container = document.getElementById('sidebar-content')
+    Ps.initialize(container, {
+      wheelSpeed: 0.7,
+    })
+  },
   data() {
     return {
       commentText: '',
@@ -97,12 +106,14 @@ export default {
   &__container {
     transition: transform 0.3s;
     margin-left: auto;
-    padding: 20px;
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 300px;
     z-index: 9999;
     overflow: auto;
     right: 0;
-    min-height: 100%;
+    height: calc(100% - 52px);
     transform: translateX(500px);
     position: fixed;
 
@@ -111,12 +122,18 @@ export default {
     }
   }
 
+  &__content {
+    position: relative;
+    height: 100%;
+    padding: 0 20px;
+  }
+
   &__close-button {
-    color: $blue-primary;
+    color: #555;
     position: fixed;
     font-size: 14px;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
   }
 
   &__description {

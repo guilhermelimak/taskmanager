@@ -1,5 +1,5 @@
 <template>
-<div class="dashboard__container">
+<div id="container" class="dashboard__container">
   <card-list
     :cards="filteredByProject"
     :key="$key"
@@ -15,6 +15,7 @@ import CardList from 'components/CardList.vue'
 import { lists, cards, currentProjectId } from 'getters'
 import { database } from 'store'
 import { replaceState } from 'actions'
+import Ps from 'perfect-scrollbar'
 
 export default {
   ready() {
@@ -22,6 +23,11 @@ export default {
     .ref()
     .on('value', snapshot => {
       this.replaceState(snapshot.val())
+    })
+
+    const container = document.getElementById('container')
+    Ps.initialize(container, {
+      wheelSpeed: 0.7,
     })
   },
   computed: {
@@ -58,10 +64,13 @@ export default {
 <style lang="sass">
 .dashboard {
   &__container {
+    position: relative;
+    overflow: auto;
     display: flex;
     flex-direction: row;
-    min-height: 70%; // height: 100%;
-    padding: 10px 1px 10px 1px;
+    height: calc(100% - 52px);
+    width: 100%;
+    // padding: 10px 1px 10px 1px;
   }
 }
 </style>

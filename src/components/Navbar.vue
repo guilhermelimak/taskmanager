@@ -49,6 +49,7 @@ export default {
 $navbar-bg-color: #FFF;
 
 .navbar {
+  height: 52px;
   background-color: $navbar-bg-color;
 }
 </style>

@@ -80,10 +80,9 @@ export default {
 
 .card {
   font-size: 12px;
-  // margin: 1px 1px 7px 1px;
   margin-bottom: 5px;
   padding: 1px;
-  // border: 1px solid transparent;
+  border: 1px solid transparent;
 
   &-selected {
     border: 1px solid $blue-primary;
