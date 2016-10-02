@@ -2,7 +2,8 @@
 <div
   class="sidebar sidebar__container box depth-4"
   :class="{ 'is-open': isSidebarOpen }">
-  <div class="sidebar__content">
+
+  <div id="sidebar-content" class="sidebar__content">
     <i class="fa fa-close sidebar__close-button is-primary"
       @click="toggleSidebar">
     </i>
@@ -51,19 +52,33 @@
         type="text"
         class="input is-small comments__input">
     </div>
+
   </div>
 </div>
 </template>
 
 <script>
 import { currentCard, isSidebarOpen, currentCardId } from 'getters'
-import { toggleSidebar, addComment, updateCard } from 'actions'
+import { addComment, updateCard } from 'actions/cardActions'
+import { toggleSidebar } from 'actions/uiActions'
+import Ps from 'perfect-scrollbar'
 
 export default {
+  ready() {
+    this.scrollContainer = document.getElementById('sidebar-content')
+    Ps.initialize(this.scrollContainer, {
+      wheelSpeed: 0.7,
+    })
+  },
   data() {
     return {
       commentText: '',
     }
+  },
+  watch: {
+    currentCardId() {
+      Ps.update(this.scrollContainer)
+    },
   },
   methods: {
     insertComment() {
@@ -93,27 +108,47 @@ export default {
 @import '../general';
 
 .sidebar {
-  &__container {
-    transition: transform 0.3s;
-    margin-left: auto;
-    padding: 20px;
-    width: 300px;
-    transform: translateX(300px);
-
-    &.is-open {
-      height: auto;
-      transform: translateX(0);
-      position: relative;
-      right: 0;
+  textarea,
+  input {
+    border: 1px solid #ddd;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue-primary;
     }
   }
 
-  &__close-button {
-    color: $blue-primary;
+  &__container {
+    transition: transform 0.3s;
+    margin-left: auto;
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 300px;
+    z-index: 9999;
+    overflow: auto;
+    right: 0;
+    height: calc(100% - 52px);
+    transform: translateX(500px);
     position: fixed;
+
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+
+  &__content {
+    position: relative;
+    height: 100%;
+    padding: 0 20px;
+  }
+
+  &__close-button {
+    color: #555;
+    position: fixed;
+    cursor: pointer;
     font-size: 14px;
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
   }
 
   &__description {

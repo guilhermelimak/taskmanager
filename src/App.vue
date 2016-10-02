@@ -2,10 +2,12 @@
   <project-choose-screen></project-choose-screen>
   <import-modal></import-modal>
   <navbar></navbar>
+  <sidebar></sidebar>
   <dashboard></dashboard>
 </template>
 
 <script>
+import Sidebar from 'components/Sidebar.vue'
 import Dashboard from 'components/Dashboard.vue'
 import ImportModal from 'components/ImportModal.vue'
 import Navbar from 'components/Navbar.vue'
@@ -33,6 +35,7 @@ export default {
     Dashboard,
     ImportModal,
     Navbar,
+    Sidebar,
     ProjectChooseScreen,
   },
 }
@@ -50,13 +53,13 @@ export default {
 
 html {
   height: 100%;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100%;
-  background-color: #868686;
+  background-color: #e9e9e9;
   font-family: Helvetica, sans-serif;
 }
 </style>

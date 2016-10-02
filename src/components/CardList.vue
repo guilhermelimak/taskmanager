@@ -17,23 +17,31 @@
       </i>
     </span>
   </div>
-
-  <card
-    v-for="card in filteredCards"
-    draggable="true"
-    @dragstart="onComponentDrag"
-    :card="card">
-  </card>
+  <div id="cardlist-{{ key }}" class="card-list__content">
+    <card
+      v-for="card in filteredCards"
+      draggable="true"
+      @dragstart="onComponentDrag"
+      :card="card">
+    </card>
+  </div>
 </div>
 </template>
 
 <script>
 import Card from 'components/Card.vue'
 import { getParentBag } from 'util'
-import { moveCard, addNewCard } from 'actions'
+import { moveCard, addNewCard } from 'actions/cardActions'
 import { currentProjectId } from 'getters'
+import Ps from 'perfect-scrollbar'
 
 export default {
+  ready() {
+    this.scrollContainer = document.getElementById(`cardlist-${this.key}`)
+    Ps.initialize(this.scrollContainer, {
+      wheelSpeed: 0.7,
+    })
+  },
   props: {
     key: {
       required: true,
@@ -45,6 +53,11 @@ export default {
     cards: {
       type: Object,
       required: true,
+    },
+  },
+  watch: {
+    cards() {
+      Ps.update(this.scrollContainer)
     },
   },
   computed: {
@@ -94,38 +107,49 @@ export default {
 <style lang="sass">
 @import '../general';
 
-$list-max-width: 260px;
+$list-max-width: 300px;
 $list-bg-color: #fdfdfd;
 
 .card-list {
   &__container {
+    position: relative;
     background-color: $list-bg-color;
-    border: 1px solid #bbb;
-    margin: 0 9px;
-    margin-bottom: 0 !important;
+    margin: 5px 5px;
     min-width: $list-max-width !important;
     max-width: $list-max-width !important;
-    padding: 6px;
   }
 
   &__header {
-    padding: 4px;
+    padding: 8px;
     margin-bottom: 0 !important;
+    min-height: 42px;
+    border: 1px solid #ddd;
+  }
+
+  &__content {
+    padding: 4px;
+    position: relative;
+    border: 1px solid #ddd;
+    height: calc(100% - 42px);
+    flex: 1;
+    border-top: none;
   }
 
   &__name {
     font-size: 13pt;
     font-weight: 500;
-    color: #222324 !important;
+    color: #555 !important;
+    user-select: none;
+    cursor: default;
   }
 
   &__add-button {
-    color: $blue-primary;
     font-size: 14pt !important;
+    color: #555;
 
     &:hover {
       cursor: pointer;
-      color: #222324;
+      color: $blue-primary;
     }
   }
 }

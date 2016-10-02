@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import { importTasks, toggleImportModal } from 'actions'
+import { toggleImportModal } from 'actions/uiActions'
+import { importTasks } from 'actions'
 import { isImportModalOpen } from 'getters'
 
 export default {

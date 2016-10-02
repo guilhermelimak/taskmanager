@@ -13,10 +13,20 @@ export const getParentBag = (el) => {
 }
 
 export const emptyCard = {
-  title: '',
-  description: '',
-  analysis_duration: '',
-  development_duration: '',
-  testing_duration: '',
+  title: null,
+  description: null,
   hours: 0,
+  listId: null,
+  projectId: null,
+  analysis_duration: null,
+  development_duration: null,
+  testing_duration: null,
+}
+
+export const emptyList = {
+  name: null,
+}
+
+export const emptyProject = {
+  name: null,
 }

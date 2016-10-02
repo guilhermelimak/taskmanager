@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import { deleteCard, toggleSidebar, changeCurrentCard } from 'actions'
+import { toggleSidebar } from 'actions/uiActions'
+import { deleteCard, changeCurrentCard } from 'actions/cardActions'
 import { currentCardId, isSidebarOpen } from 'getters'
 
 export default {
@@ -79,7 +80,7 @@ export default {
 
 .card {
   font-size: 12px;
-  margin: 1px 1px 7px 1px;
+  margin-bottom: 5px;
   padding: 1px;
   border: 1px solid transparent;
 
