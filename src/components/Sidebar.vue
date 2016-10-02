@@ -65,8 +65,8 @@ import Ps from 'perfect-scrollbar'
 
 export default {
   ready() {
-    const container = document.getElementById('sidebar-content')
-    Ps.initialize(container, {
+    this.scrollContainer = document.getElementById('sidebar-content')
+    Ps.initialize(this.scrollContainer, {
       wheelSpeed: 0.7,
     })
   },
@@ -74,6 +74,11 @@ export default {
     return {
       commentText: '',
     }
+  },
+  watch: {
+    currentCardId() {
+      Ps.update(this.scrollContainer)
+    },
   },
   methods: {
     insertComment() {

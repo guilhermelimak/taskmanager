@@ -37,8 +37,8 @@ import Ps from 'perfect-scrollbar'
 
 export default {
   ready() {
-    const container = document.getElementById(`cardlist-${this.key}`)
-    Ps.initialize(container, {
+    this.scrollContainer = document.getElementById(`cardlist-${this.key}`)
+    Ps.initialize(this.scrollContainer, {
       wheelSpeed: 0.7,
     })
   },
@@ -53,6 +53,11 @@ export default {
     cards: {
       type: Object,
       required: true,
+    },
+  },
+  watch: {
+    cards() {
+      Ps.update(this.scrollContainer)
     },
   },
   computed: {
