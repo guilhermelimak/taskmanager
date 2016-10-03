@@ -114,6 +114,8 @@ $list-bg-color: #fdfdfd;
   &__container {
     position: relative;
     background-color: $list-bg-color;
+    border-radius: 3px !important;
+    border: 1px solid #CCC;
     margin: 5px 5px;
     min-width: $list-max-width !important;
     max-width: $list-max-width !important;
@@ -123,16 +125,14 @@ $list-bg-color: #fdfdfd;
     padding: 8px;
     margin-bottom: 0 !important;
     min-height: 42px;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
   }
 
   &__content {
     padding: 4px;
     position: relative;
-    border: 1px solid #ddd;
     height: calc(100% - 42px);
     flex: 1;
-    border-top: none;
   }
 
   &__name {

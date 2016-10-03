@@ -39,3 +39,16 @@ export const addComment = ({ dispatch, state }, comment) => {
   .push()
   .set(comment)
 }
+
+export const logWork = ({ dispatch, state }, workLog) => {
+  database
+  .ref(`cards/${state.currentCardId}/workLogged/`)
+  .push()
+  .set(workLog)
+}
+
+export const deleteWorkLog = ({ dispatch, state }, workLogId) => {
+  database
+  .ref(`cards/${state.currentCardId}/workLogged/${workLogId}/`)
+  .remove()
+}

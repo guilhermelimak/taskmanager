@@ -14,6 +14,7 @@ export const getParentBag = (el) => {
 
 export const emptyCard = {
   title: null,
+  workLogged: null,
   description: null,
   hours: 0,
   listId: null,

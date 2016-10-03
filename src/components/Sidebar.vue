@@ -27,40 +27,29 @@
 
     <hr>
 
-    <ul>
-      <p class="sidebar__title title is-6">Estimated time</p>
-      <li>Analysis: {{ currentCard.analysis_duration }}h</li>
-      <li>Development: {{ currentCard.development_duration }}h</li>
-      <li>Testing: {{ currentCard.testing_duration }}h</li>
-    </ul>
+    <time-estimation :current-card="currentCard">
+
+    </time-estimation>
 
     <hr>
+    <work-log :current-card="currentCard">
+    </work-log>
 
-    <div class="sidebar__comments">
-      <p class="sidebar__title title is-6">
-        Comments
-      </p>
-      <ul>
-        <div v-for="comment in currentCard.comments">
-          <li><p>{{ comment }}</p></li>
-          <hr class="comments__divider">
-        </div>
-      </ul>
-      <input
-        @keyup.enter="insertComment"
-        v-model="commentText"
-        type="text"
-        class="input is-small comments__input">
-    </div>
-
+    <hr>
+    <comments :current-card="currentCard">
+    </comments>
   </div>
 </div>
 </template>
 
 <script>
 import { currentCard, isSidebarOpen, currentCardId } from 'getters'
-import { addComment, updateCard } from 'actions/cardActions'
+import { updateCard } from 'actions/cardActions'
 import { toggleSidebar } from 'actions/uiActions'
+import TimeEstimation from 'components/sidebar/TimeEstimation.vue'
+import Comments from 'components/sidebar/Comments.vue'
+import WorkLog from 'components/sidebar/WorkLog.vue'
+
 import Ps from 'perfect-scrollbar'
 
 export default {
@@ -81,18 +70,18 @@ export default {
     },
   },
   methods: {
-    insertComment() {
-      this.addComment(this.commentText)
-      this.commentText = ''
-    },
     saveCard() {
       this.updateCard(this.currentCardId, this.currentCard)
     },
   },
+  components: {
+    TimeEstimation,
+    Comments,
+    WorkLog,
+  },
   vuex: {
     actions: {
       toggleSidebar,
-      addComment,
       updateCard,
     },
     getters: {
@@ -104,13 +93,15 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import '../general';
 
 .sidebar {
   textarea,
   input {
     border: 1px solid #ddd;
+    padding: 4px;
+
     &:focus {
       outline: none;
       border: 1px solid $blue-primary;
@@ -168,7 +159,6 @@ export default {
   }
 
   &__comments {
-    font-size: 13px;
   }
 
   hr {
@@ -176,9 +166,4 @@ export default {
   }
 }
 
-.comments {
-  &__input {
-    margin-bottom: 10px;
-  }
-}
 </style>

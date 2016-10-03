@@ -9,7 +9,7 @@
           autofocus
           @keyup.enter="importTasks(tasks)"
           class="textarea import__input"
-          :placeholder="emptyCard | json"
+          :placeholder="importExample | json"
           v-model="tasks">
         </textarea>
       <a
@@ -33,7 +33,11 @@ export default {
   data() {
     return {
       tasks: '',
-      emptyCard,
+      importExample: {
+        tasks: {
+          emptyCard,
+        },
+      },
     }
   },
   vuex: {
