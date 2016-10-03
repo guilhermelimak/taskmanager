@@ -1,11 +1,11 @@
 import { database } from 'store'
 import { emptyCard } from 'util'
 
-export const importTasks = ({ dispatch }, tasksList) => {
+export const importTasks = ({ dispatch, state }, tasksList) => {
   const tasksObj = JSON.parse(tasksList).tasks
 
   for (const key in tasksObj) {
-    tasksObj[key] = { ...tasksObj[key], listId: 'a' }
+    tasksObj[key] = { ...tasksObj[key], projectId: state.currentProjectId, listId: 'a' }
   }
 
   database
