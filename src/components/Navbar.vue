@@ -1,7 +1,7 @@
 <template>
 <div class="nav navbar">
   <div class="nav-left">
-    <div class="nav-item">
+    <div class="nav-item is-hidden-touch">
       <project-select></project-select>
     </div>
   </div>
