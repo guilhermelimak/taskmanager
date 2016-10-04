@@ -3,7 +3,7 @@
     <p class="sidebar__title title is-6">Work log</p>
     <div class="columns">
       <div class="column is-three-quarters">
-        <input placeholder="Time in hours (E.g. 1.5h)" v-model="workLog.amount" class="tile">
+        <input placeholder="Time in hours (E.g. 1.5)" v-model="workLog.amount" class="tile">
         <input placeholder="Description" v-model="workLog.description" class="tile">
       </div>
       <div class="column is-one-quarter">
@@ -49,10 +49,12 @@ export default {
   },
   methods: {
     logClick() {
-      this.logWork(this.workLog)
-      this.workLog = {
-        amount: '',
-        description: '',
+      if (this.amout > 0) {
+        this.logWork(this.workLog)
+        this.workLog = {
+          amount: '',
+          description: '',
+        }
       }
     },
     deleteClick(key) {
