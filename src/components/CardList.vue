@@ -5,12 +5,12 @@
      class="depth-2 card-list__container"
      bag>
 
-  <div class="card-list__header level">
-    <strong class="card-list__name level-left">
+  <div class="card-list__header">
+    <strong class="card-list__name">
       {{ list.name }}
     </strong>
 
-    <span @click="" class="icon level-right">
+    <span @click="" class="icon">
       <i
         @click="addNewCard(key, currentProjectId)"
         class="fa fa-plus-circle card-list__add-button">
@@ -126,6 +126,9 @@ $list-bg-color: #fdfdfd;
     margin-bottom: 0 !important;
     min-height: 42px;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__content {
