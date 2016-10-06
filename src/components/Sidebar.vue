@@ -8,11 +8,12 @@
       @click="toggleSidebar">
     </i>
 
-    <input
+    <textarea
+      resizable="false"
       class="sidebar__title title is-4"
       placeholder="Untitled"
       v-model="currentCard.title"
-      @keyup="saveCard">
+      @keyup="saveCard"></textarea>
 
     <p class="sidebar__title title is-6">
       Description

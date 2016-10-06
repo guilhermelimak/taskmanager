@@ -27,6 +27,7 @@ export const addNewCard = ({ dispatch }, listKey, projectId) => {
 
 export const deleteCard = ({ dispatch }, cardKey) => {
   if (confirm('Are you sure you want to delete?')) {
+    this.changeCurrentCard({ dispatch }, null)
     database
     .ref(`cards/${cardKey}/`)
     .remove()
