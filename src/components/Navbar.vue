@@ -1,7 +1,7 @@
 <template>
 <div class="nav navbar">
   <div class="nav-left">
-    <div class="nav-item is-hidden-touch">
+    <div class="nav-item">
       <project-select></project-select>
     </div>
   </div>
@@ -10,7 +10,7 @@
       <h4 class="title is-4">{{ currentProject.name }}</h4>
     </div>
   </div>
-  <div class="nav-right">
+  <div class="nav-right is-hidden-touch">
     <div class="nav-item">
       <a class="button is-outlined is-primary" @click="toggleImportModal">
         <span class="icon is-small">

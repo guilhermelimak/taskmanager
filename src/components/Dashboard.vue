@@ -1,5 +1,5 @@
 <template>
-<div id="container" class="dashboard__container">
+<div id="container" class="dashboard__container" :class="{ 'shrinked': isSidebarOpen }">
   <card-list
     :cards="filteredByProject"
     :key="$key"
@@ -12,7 +12,7 @@
 <script>
 import Vue from 'vue'
 import CardList from 'components/CardList.vue'
-import { lists, cards, currentProjectId } from 'getters'
+import { lists, cards, currentProjectId, isSidebarOpen } from 'getters'
 import { database } from 'store'
 import { replaceState } from 'actions'
 import Ps from 'perfect-scrollbar'
@@ -53,6 +53,7 @@ export default {
       cards,
       lists,
       currentProjectId,
+      isSidebarOpen,
     },
   },
   components: {
@@ -70,7 +71,12 @@ export default {
     flex-direction: row;
     height: calc(100% - 52px);
     width: 100%;
-    // padding: 10px 1px 10px 1px;
+    transition: none;
+
+    &.shrinked {
+      transition: width .4s !important;
+      width: calc(100% - 300px);
+    }
   }
 }
 </style>

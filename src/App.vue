@@ -1,26 +1,50 @@
 <template>
-  <project-choose-screen></project-choose-screen>
   <import-modal></import-modal>
-  <navbar></navbar>
-  <sidebar></sidebar>
-  <dashboard></dashboard>
+  <toast :is-shown.sync="isToastShown" :message="toastMessage"></toast>
+  <router-view></router-vew>
 </template>
 
 <script>
 import Sidebar from 'components/Sidebar.vue'
-import Dashboard from 'components/Dashboard.vue'
+import Toast from 'components/Toast.vue'
 import ImportModal from 'components/ImportModal.vue'
 import Navbar from 'components/Navbar.vue'
-import ProjectChooseScreen from 'components/ProjectChooseScreen.vue'
 
 import { replaceState } from 'actions'
-import store, { database } from 'store'
+import { router } from 'router'
+import store, { database, auth } from 'store'
 
 export default {
-  el: 'body',
+  el() {
+    return 'body'
+  },
   store,
   replace: false,
+  data() {
+    return {
+      isToastShown: false,
+      toastMessage: '',
+    }
+  },
   ready() {
+    router
+    .beforeEach(({ to, next, abort }) => {
+      const user = auth.currentUser
+      if (to.auth && !user) {
+        abort()
+      } else {
+        next()
+      }
+    })
+
+    auth
+    .onAuthStateChanged(user => {
+      if (user) {
+        this.$router.go('/choose-project')
+      } else {
+        this.$router.go('/login')
+      }
+    })
     database
     .ref()
     .once('value')
@@ -32,11 +56,16 @@ export default {
     },
   },
   components: {
-    Dashboard,
     ImportModal,
     Navbar,
     Sidebar,
-    ProjectChooseScreen,
+    Toast,
+  },
+  events: {
+    showToast(message) {
+      this.isToastShown = true
+      this.toastMessage = message
+    },
   },
 }
 </script>

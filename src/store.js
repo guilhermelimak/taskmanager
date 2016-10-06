@@ -20,9 +20,12 @@ const state = {
 
 const firebase = require('firebase/app')
 require('firebase/database')
+require('firebase/auth')
+
 
 firebase.initializeApp(prod)
 export const database = firebase.database()
+export const auth = firebase.auth()
 
 export default new Vuex.Store({
   state,

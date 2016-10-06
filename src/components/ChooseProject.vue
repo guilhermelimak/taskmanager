@@ -16,14 +16,13 @@
 
 <script>
 import { changeCurrentProject } from 'actions'
-import { hideWelcomeScreen } from 'actions/uiActions'
 import { projects, isWelcomeScreenOpen } from 'getters'
 
 export default {
   methods: {
     selectProject(key) {
       this.changeCurrentProject(key)
-      this.hideWelcomeScreen()
+      this.$router.go('/')
     },
   },
   vuex: {
@@ -33,7 +32,6 @@ export default {
     },
     actions: {
       changeCurrentProject,
-      hideWelcomeScreen,
     },
   },
 }
@@ -41,7 +39,6 @@ export default {
 
 <style lang="sass" scoped>
 .background {
-  z-index: 99;
   position: absolute;
   width: 100%;
   height: 100%;
